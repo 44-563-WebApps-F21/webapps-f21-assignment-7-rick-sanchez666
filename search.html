@@ -75,10 +75,10 @@
       el.src = "images/animal.jpg";
     } else {
       el.src = "images/hole.jpg";
+    }
       updateTries();
       let maxDistance = distance(elementId, animalLocation);
       updateDistance(maxDistance);
-    }
   }
 
   function updateTries() {
@@ -92,6 +92,7 @@
 
 
   function distance(pos1, pos2) {
+    
     pos1 = parseInt(pos1);
     pos2 = parseInt(pos2);
     let pos1Row = ~~(pos1/6) + 1;
