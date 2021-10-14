@@ -36,6 +36,9 @@
 	</p>
 	<input type="text" id="inp">
 	<button onclick="makeNewDiv()">Push Value</button>
+	<button onclick="popItem()">Pop</button>
+	<button onclick="zap()">Zap values</button>
+	<button onclick="unique()">Unique</button>
 	
 	
 </body>
@@ -45,11 +48,50 @@
 		/* make the div and its text */
 		let element = document.createElement("div")
 		element.innerHTML = inp;
-		element.style.class = "stack"
+		element.classList.add( "stack" );
 
 		/* add it to the container */
 		document.getElementById('target').appendChild(element)
 		
+	}
+
+	function popItem() {
+		let stackItems  = document.getElementsByClassName("stack");
+		if(stackItems.length > 0) {
+			stackItems[stackItems.length-1].remove();
+		}
+	}
+
+	function zap() {
+		let stackItems  = document.getElementsByClassName("stack");
+		let rlist= [];
+		let inp = document.getElementById("inp").value;
+		for(let el of stackItems)  {
+			if(el.innerHTML == inp) {
+				console.log(el)
+				rlist.push(el);
+			}
+		}
+		rlist.forEach( el => {
+			el.remove()
+		})
+	}
+
+	function unique() {
+		let stackItems  = document.getElementsByClassName("stack");
+
+		let items ={};
+		let rlist= [];
+		for(let el of stackItems)  {
+			if(items[el.innerHTML]) {
+				rlist.push(el)
+			} else {
+				items[el.innerHTML] = 1
+			}
+		}
+		rlist.forEach( el => {
+			el.remove()
+		})
 	}
 </script>
 </html>	

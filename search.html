@@ -25,7 +25,9 @@
   <p class="text-center">click on the squares to search for wild life.</p>
   <p class="text-center" id="tries">Number of triesis zero.</p>
   <p class="text-center" id="distance">Distance is unknown</p>
-  
+  <div class="text-center mb-2">
+    <button class="btn btn-primary" onclick="newGame()">New Game</button>  
+  </div>
 
 <div class="image-grid d-flex flex-column justify-content-center align-items-center ">
     <div class="image-row d-flex">
@@ -103,6 +105,16 @@
     let verticalDistance = Math.abs(pos1Col - pos2Col);
     return horizontalDistance > verticalDistance ? horizontalDistance : verticalDistance;
 
+  }
+
+  function newGame() {
+    let random = Math.floor(Math.random() * (23 - 0 + 1) + 0);
+    console.log("animal position is ", random);
+    animalLocation = random;
+    triesEl.innerText = 0;
+    ids.forEach( i => {
+      document.getElementById(i).src="images/starting.jpg"
+    })
   }
 </script>
 
