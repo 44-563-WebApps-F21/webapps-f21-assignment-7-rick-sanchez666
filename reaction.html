@@ -16,7 +16,7 @@
   <h2>Timeout - Red in 3 seconds</h2>
   <div id="target">Your time</div>
   <div id="countdown">Count</div>
-  <button type="button" class="btn btn-primary" onclick="recordReact()">Start Timer</button>
+  <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
   <button type="button" class="btn btn-primary" onclick="recordReact()">React Now</button>
 
 
@@ -25,7 +25,21 @@
     function recordReact() {
       myTime = Date.now();
       console.log(myTime);
-     
+    }
+    function startTime() {
+      for(let i=0; i<4; i++) {
+        setTimeout(() => {
+          document.getElementById('countdown').innerHTML = i;
+        }, (3-i)* 1000)
+      }
+      setTimeout( () => {
+        if(myTime == undefined) {
+          document.getElementById('target').innerText="Too Slow";
+        } else {
+          let buttonTime = Date.now();
+          document.getElementById('target').innerText= `Time was ${Math.abs(myTime-buttonTime)}`;
+        }
+      },3000)
     }
 
   
